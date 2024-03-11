@@ -8,10 +8,11 @@ def cosine_similarity(x:np.ndarray, y:np.ndarray):
     if norm_mult == 0:
         return 0
     cosine_similarity = dot_product / norm_mult
+    cosine_similarity = cosine_similarity.item()
     if cosine_similarity > 1:
-        return 1
+        cosine_similarity = 1
     if cosine_similarity < -1:
-        return -1
+        cosine_similarity = -1
     return cosine_similarity
 
 __all__ = ["cosine_similarity"]
