@@ -1,13 +1,21 @@
 import numpy as np
-
 def euclidean_distance(x:np.ndarray, y:np.ndarray):
     return np.linalg.norm(x - y)
 
 def cosine_distance(x:np.ndarray, y:np.ndarray):
+    dot_product = np.dot(x, y.T)
+    
     norm_mult = np.linalg.norm(x) * np.linalg.norm(y)
     if norm_mult == 0:
-        raise ValueError("Invalid input, norm_mult cannot be zero")
-    return 1 - np.dot(x, y) / norm_mult
+        return 0
+    cosine_similarity = dot_product / norm_mult
+    if cosine_similarity > 1:
+        return 1
+    if cosine_similarity < -1:
+        return -1
+    return 1 - cosine_similarity
+
+
 
 __all__ = ["euclidean_distance", "cosine_distance"]
 

@@ -1,10 +1,18 @@
 import numpy as np
 
 def cosine_similarity(x:np.ndarray, y:np.ndarray):
+    
+    dot_product = np.dot(x, y.T)
+    
     norm_mult = np.linalg.norm(x) * np.linalg.norm(y)
     if norm_mult == 0:
         return 0
-    return np.dot(x, y) / norm_mult
+    cosine_similarity = dot_product / norm_mult
+    if cosine_similarity > 1:
+        return 1
+    if cosine_similarity < -1:
+        return -1
+    return cosine_similarity
 
 __all__ = ["cosine_similarity"]
 
