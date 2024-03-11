@@ -1,12 +1,11 @@
 import numpy as np
 
 def cosine_similarity(x:np.ndarray, y:np.ndarray):
-    
-    dot_product = np.dot(x, y.T)
+    dot_product = np.dot(x, y)
     
     norm_mult = np.linalg.norm(x) * np.linalg.norm(y)
     if norm_mult == 0:
-        return 0
+        return float('inf')  # Return positive infinity for cosine distance when one of the vectors is a zero vector
     cosine_similarity = dot_product / norm_mult
     cosine_similarity = cosine_similarity.item()
     if cosine_similarity > 1:
@@ -14,7 +13,7 @@ def cosine_similarity(x:np.ndarray, y:np.ndarray):
     if cosine_similarity < -1:
         cosine_similarity = -1
     return cosine_similarity
-
+   
 __all__ = ["cosine_similarity"]
 
 if __name__ == "__main__":

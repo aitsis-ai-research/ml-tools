@@ -2,17 +2,12 @@ import numpy as np
 from typing import Union, List
 
 def accuracy(y_pred: list, y_actual: list):
-    find_same_count = 0
-    for i in range(len(y_pred)):
-        if y_pred[i] == y_actual[i]:
-            find_same_count += 1
-
-    return find_same_count / len(y_pred)
+    intersection_count = len(set(y_pred) & set(y_actual))
+    return intersection_count / len(y_pred)
 
 
 def find_true_positive(y_pred: list, y_actual: list):
-    return y_actual.intersection(y_pred)
-
+    return len(set(y_pred) & set(y_actual))
 
 def find_false_positive(y_pred: list, y_actual: list):
     return len(y_pred) - find_true_positive(y_pred, y_actual)

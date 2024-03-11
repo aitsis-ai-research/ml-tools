@@ -55,6 +55,14 @@ class KMeans:
             iter += 1
         return self.centroids
     
+    def get_labels(self):
+        labels = []
+        for i in range(self.X.shape[0]):
+            distances = [np.linalg.norm(self.X[i] - c) for c in self.centroids]
+            cluster = np.argmin(distances)
+            labels.append(cluster)
+        return labels
+    
     def get_clusters(self):
         Cluster_list = []
         clusters = [[] for _ in range(self.n_clusters)]
