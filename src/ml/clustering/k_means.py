@@ -1,6 +1,5 @@
 import numpy as np
 from typing import Union, List
-from ..algorithm import Similarity
 
 class KMeans:
     def __init__(self, X: Union[np.ndarray, list], centroids: Union[np.ndarray, list] = None, n_clusters=8, max_iters=300, tol=1e-4):
