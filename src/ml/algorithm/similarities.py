@@ -1,6 +1,8 @@
 import numpy as np
 
 def cosine_similarity(x:np.ndarray, y:np.ndarray):
+    x = x.flatten()
+    y = y.flatten()
     dot_product = np.dot(x, y)
     
     norm_mult = np.linalg.norm(x) * np.linalg.norm(y)
