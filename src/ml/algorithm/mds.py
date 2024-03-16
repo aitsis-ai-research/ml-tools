@@ -1,5 +1,6 @@
 import numpy as np
-
+from sklearn.manifold import MDS
+""" 
 class MDS:
     def __init__(self, n_components=2, max_iter=100, tol=1e-4):
         self.n_components = n_components
@@ -18,4 +19,16 @@ class MDS:
 
         self.components_ = eig_vectors[:, :self.n_components] @ np.diag(np.sqrt(eig_values[:self.n_components]))
 
-        return self
+        return self """
+
+class MDS2:
+    def __init__(self, n_components=2, max_iter=100, tol=1e-4):
+        self.n_components = n_components
+        self.max_iter = max_iter
+        self.tol = tol
+
+    def fit(self, distances_matrix):
+        mds = MDS(n_components=self.n_components, max_iter=self.max_iter)
+        self.components_ = mds.fit_transform(distances_matrix)
+        return self.components_
+    
